@@ -1,0 +1,17 @@
+{
+  "name": "hermes-webbridge",
+  "version": "1.0.0",
+  "description": "CLI to set up Kimi WebBridge + Tailscale Serve on Windows laptops",
+  "bin": {
+    "hwb": "./bin/hwb.js",
+    "hermes-webbridge": "./bin/hwb.js"
+  },
+  "repository": "github.com/khrannas/hermes-webbridge",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node -e \"require('./src/index.js')\""
+  }
+}
