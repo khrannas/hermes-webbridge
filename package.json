@@ -1,17 +1,35 @@
 {
   "name": "hermes-webbridge",
   "version": "1.0.0",
-  "description": "CLI to set up Kimi WebBridge + Tailscale Serve on Windows laptops",
+  "description": "One-command CLI to set up Kimi WebBridge + Tailscale Serve on Windows laptops after a restart",
+  "keywords": ["kimi-webbridge", "tailscale", "web-bridge", "chrome", "browser-automation", "windows", "cli"],
+  "homepage": "https://github.com/khrannas/hermes-webbridge#readme",
+  "bugs": {
+    "url": "https://github.com/khrannas/hermes-webbridge/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Khrannas",
+    "url": "https://github.com/khrannas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khrannas/hermes-webbridge.git"
+  },
   "bin": {
     "hwb": "./bin/hwb.js",
     "hermes-webbridge": "./bin/hwb.js"
   },
-  "repository": "github.com/khrannas/hermes-webbridge",
-  "license": "MIT",
   "engines": {
     "node": ">=18"
   },
+  "os": ["win32"],
+  "preferGlobal": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "test": "node -e \"require('./src/index.js')\""
+    "test": "node bin/hwb.js",
+    "start": "node bin/hwb.js start"
   }
 }
