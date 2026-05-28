@@ -1,35 +1,35 @@
 # Contributing to hermes-webbridge
 
-Terima kasih sudah ingin berkontribusi! Berikut panduan singkatnya.
+Thank you for wanting to contribute! Here's a quick guide.
 
-## Cara Berkontribusi
+## How to Contribute
 
-1. **Fork** repositori ini
-2. Buat **branch fitur**: `git checkout -b fitur-keren`
-3. **Commit** perubahan: `git commit -m 'feat: tambah fitur keren'`
-4. **Push** ke branch: `git push origin fitur-keren`
-5. Buat **Pull Request** ke branch `main`
+1. **Fork** this repository
+2. Create a **feature branch**: `git checkout -b cool-feature`
+3. **Commit** your changes: `git commit -m 'feat: add cool feature'`
+4. **Push** to the branch: `git push origin cool-feature`
+5. Create a **Pull Request** to the `main` branch
 
-## Panduan Kode
+## Code Guidelines
 
-- **CommonJS** — gunakan `require()` dan `module.exports`, jangan ES modules
-- **Zero dependencies** — jangan tambahkan package npm eksternal
-- Setiap command di `src/commands/` harus mengembalikan `{ success, message }`
-- Gunakan error code yang informatif
-- Test dengan menjalankan: `node bin/hwb.js help`
+- **CommonJS** — use `require()` and `module.exports`, not ES modules
+- **Zero dependencies** — don't add external npm packages
+- Each command in `src/commands/` must return `{ success, message }`
+- Use informative error codes
+- Test by running: `node bin/hwb.js help`
 
-## Melaporkan Masalah
+## Reporting Issues
 
-- Pastikan issue belum ada yang melaporkan sebelumnya
-- Sertakan versi Node.js, OS, dan output error
-- Jelaskan langkah reproduksi
+- Make sure the issue hasn't been reported before
+- Include Node.js version, OS, and error output
+- Describe reproduction steps
 
 ## Pull Request
 
-- Jelaskan perubahan yang dibuat
-- Pastikan tidak merusak command yang sudah ada
-- Ikuti gaya kode yang sudah ada (2 spasi indentasi)
+- Describe the changes made
+- Ensure existing commands are not broken
+- Follow existing code style (2-space indentation)
 
-## Lisensi
+## License
 
-Dengan berkontribusi, Anda setuju bahwa kontribusi Anda akan dilisensikan di bawah [MIT License](LICENSE).
+By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).

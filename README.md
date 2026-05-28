@@ -7,59 +7,59 @@
 ![GitHub stars](https://img.shields.io/github/stars/khrannas/hermes-webbridge?style=flat-square)
 ![npm version](https://img.shields.io/npm/v/hermes-webbridge?style=flat-square)
 
-**Satu perintah untuk memulihkan koneksi Kimi WebBridge + Tailscale Serve setelah laptop Windows di-restart.**
+**One command to restore Kimi WebBridge + Tailscale Serve connection after a Windows laptop restart.**
 
-> Dibuat untuk Hermes Agent, tapi bisa dipakai siapa saja yang butuh browser automation via Tailscale.
+> Built for Hermes Agent, but usable by anyone who needs browser automation via Tailscale.
 
 ---
 
-## Daftar Isi
+## Table of Contents
 
-- [Masalah](#masalah)
-- [Solusi](#solusi)
-- [Prasyarat](#prasyarat)
-- [Instalasi](#instalasi)
-- [Penggunaan](#penggunaan)
-- [Referensi Perintah](#referensi-perintah)
-- [Contoh Output](#contoh-output)
-- [Arsitektur](#arsitektur)
+- [Problem](#problem)
+- [Solution](#solution)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Command Reference](#command-reference)
+- [Example Output](#example-output)
+- [Architecture](#architecture)
 - [Troubleshooting](#troubleshooting)
-- [Pengembangan](#pengembangan)
-- [Lisensi](#lisensi)
+- [Development](#development)
+- [License](#license)
 
-## Masalah
+## Problem
 
-Setiap kali laptop Windows di-restart, dua service ini harus dijalankan manual:
+Every time the Windows laptop restarts, these two services must be started manually:
 
-- **Kimi WebBridge daemon** — perlu start dengan `--addr 0.0.0.0:PORT`
-- **Tailscale Serve** — perlu di-enable ulang
+- **Kimi WebBridge daemon** — needs to be started with `--addr 0.0.0.0:PORT`
+- **Tailscale Serve** — needs to be re-enabled
 
-Lupa salah satu? Koneksi browser automation putus. Ribet.
+Forget one? Browser automation connection breaks. Annoying.
 
-## Solusi
+## Solution
 
-`hermes-webbridge` mengotomatiskan semua langkah recovery dalam satu perintah:
+`hermes-webbridge` automates all recovery steps in one command:
 
 ```bash
 npx github:khrannas/hermes-webbridge recover
 ```
 
-## Prasyarat
+## Prerequisites
 
-- **Node.js** ≥ 18 (sama https://nodejs.org)
-- **Tailscale** terinstal dan login (https://tailscale.com/download)
-- **Kimi WebBridge** daemon terinstal (https://kimi.com/features/webbridge)
+- **Node.js** ≥ 18 (see https://nodejs.org)
+- **Tailscale** installed and logged in (https://tailscale.com/download)
+- **Kimi WebBridge** daemon installed (https://kimi.com/features/webbridge)
 - **Windows** 10/11
 
-## Instalasi
+## Installation
 
-Tidak perlu instalasi. Jalankan langsung via `npx`:
+No installation required. Run directly via `npx`:
 
 ```bash
 npx github:khrannas/hermes-webbridge recover
 ```
 
-Atau clone untuk penggunaan offline:
+Or clone for offline use:
 
 ```bash
 git clone https://github.com/khrannas/hermes-webbridge.git
@@ -67,35 +67,35 @@ cd hermes-webbridge
 node bin/hwb.js recover
 ```
 
-## Penggunaan
+## Usage
 
-Setelah laptop Windows di-restart, cukup jalankan:
+After a Windows laptop restart, simply run:
 
 ```bash
 npx github:khrannas/hermes-webbridge recover
 ```
 
-Tool ini akan:
+This tool will:
 
-1. ✅ Mengecek apakah Kimi WebBridge terinstal
-2. ✅ Menjalankan daemon Webbridge di port 10086
-3. ✅ Mengaktifkan Tailscale Serve
-4. ✅ Memverifikasi semua komponen berfungsi
-5. ✅ Menampilkan status lengkap
+1. ✅ Check if Kimi WebBridge is installed
+2. ✅ Start the Webbridge daemon on port 10086
+3. ✅ Enable Tailscale Serve
+4. ✅ Verify all components are working
+5. ✅ Display full status
 
-## Referensi Perintah
+## Command Reference
 
-| Perintah | Fungsi |
-|----------|--------|
-| `hwb check` | Mengecek status daemon Webbridge + Tailscale Serve |
-| `hwb start` | Menjalankan Webbridge daemon + mengaktifkan Tailscale Serve |
-| `hwb stop` | Menghentikan Webbridge daemon |
-| `hwb recover` | Recovery lengkap setelah restart (start + verifikasi) |
-| `hwb help` | Menampilkan panduan penggunaan |
+| Command | Function |
+|---------|----------|
+| `hwb check` | Check status of Webbridge daemon + Tailscale Serve |
+| `hwb start` | Start Webbridge daemon + enable Tailscale Serve |
+| `hwb stop` | Stop Webbridge daemon |
+| `hwb recover` | Full recovery after restart (start + verification) |
+| `hwb help` | Show usage guide |
 
-## Contoh Output
+## Example Output
 
-### `hwb check` (semua berfungsi)
+### `hwb check` (all working)
 
 ```text
 ╭─────────────────────────────────╮
@@ -110,14 +110,14 @@ Tool ini akan:
 ╰─────────────────────────────────╯
 ```
 
-### `hwb check` (daemon mati)
+### `hwb check` (daemon down)
 
 ```text
 ╭─────────────────────────────────╮
 │  Hermes WebBridge Status        │
 ├─────────────────────────────────┤
 │ ❌ Daemon        not reachable  │
-│ ℹ️  Jalankan: hwb start         │
+│ ℹ️  Run: hwb start               │
 ╰─────────────────────────────────╯
 ```
 
@@ -127,9 +127,9 @@ Tool ini akan:
 ╭─────────────────────────────────╮
 │  Hermes WebBridge Start         │
 ├─────────────────────────────────┤
-│ ℹ️  Webbridge binary ditemukan  │
+│ ℹ️  Webbridge binary found      │
 │ ✅ Daemon started  (port 10086) │
-│ ✅ Tailscale Serve aktif        │
+│ ✅ Tailscale Serve active       │
 │ ✅ Extension connected          │
 │ 🌐 https://laptop-xxx.ts.net/   │
 ╰─────────────────────────────────╯
@@ -142,14 +142,14 @@ Tool ini akan:
 │  Hermes WebBridge Recovery      │
 ├─────────────────────────────────┤
 │ ✅ Daemon started               │
-│ ✅ Tailscale Serve aktif        │
-│ ✅ Verifikasi: semua OK         │
+│ ✅ Tailscale Serve active       │
+│ ✅ Verification: all OK         │
 │ 🌐 https://laptop-xxx.ts.net/   │
 │ 🎉 Recovery complete            │
 ╰─────────────────────────────────╯
 ```
 
-## Arsitektur
+## Architecture
 
 ```
 ┌──────────────────────┐        ┌─────────────────────────────┐
@@ -168,18 +168,18 @@ Tool ini akan:
                                 └─────────────────────────────┘
 ```
 
-**Kenapa Tailscale Serve?** Windows punya masalah dengan `netsh portproxy` — IP Helper Service (`iphlpsvc`) sering berebut port, dan Chrome sering bind ke IPv6 doang. Tailscale Serve jadi reverse proxy di level tailscaled, bypassing semua masalah routing Windows.
+**Why Tailscale Serve?** Windows has issues with `netsh portproxy` — IP Helper Service (`iphlpsvc`) often fights for ports, and Chrome often binds to IPv6 only. Tailscale Serve acts as a reverse proxy at the tailscaled level, bypassing all Windows routing issues.
 
 ## Troubleshooting
 
-| Masalah | Penyebab | Solusi |
-|---------|----------|--------|
-| `Daemon not reachable` | Webbridge belum diinstal | Download dari https://kimi.com/features/webbridge |
-| `Extension not connected` | Chrome extension belum dipasang | Pasang dari Chrome Web Store, pin ke toolbar |
-| `PID file exists but HTTP probe failed` | Port 10086 direbut `iphlpsvc` | Pakai port berbeda: `hwb start` dengan env `WEBBRIDGE_PORT=10090` |
-| `Command not found: npx` | Node.js belum terinstal | Install dari https://nodejs.org |
+| Problem | Cause | Solution |
+|---------|-------|----------|
+| `Daemon not reachable` | Webbridge not installed | Download from https://kimi.com/features/webbridge |
+| `Extension not connected` | Chrome extension not installed | Install from Chrome Web Store, pin to toolbar |
+| `PID file exists but HTTP probe failed` | Port 10086 taken by `iphlpsvc` | Use a different port: `hwb start` with env `WEBBRIDGE_PORT=10090` |
+| `Command not found: npx` | Node.js not installed | Install from https://nodejs.org |
 
-## Pengembangan
+## Development
 
 ```bash
 git clone https://github.com/khrannas/hermes-webbridge.git
@@ -187,21 +187,21 @@ cd hermes-webbridge
 node bin/hwb.js help
 ```
 
-### Struktur Proyek
+### Project Structure
 
 ```
 hermes-webbridge/
 ├── bin/
-│   └── hwb.js              # Entry point CLI
+│   └── hwb.js              # CLI entry point
 ├── src/
-│   ├── index.js            # Router perintah
+│   ├── index.js            # Command router
 │   ├── commands/
 │   │   ├── check.js        # Status check
 │   │   ├── start.js        # Start daemon + serve
 │   │   ├── stop.js         # Stop daemon
 │   │   └── recover.js      # Full recovery
 │   └── utils/
-│       └── powershell.js   # Eksekusi PowerShell
+│       └── powershell.js   # PowerShell execution
 ├── package.json
 ├── README.md
 ├── LICENSE
@@ -209,21 +209,21 @@ hermes-webbridge/
 └── SECURITY.md
 ```
 
-### Panduan Kontribusi
+### Contributing
 
-1. Fork repositori
-2. Buat branch fitur: `git checkout -b fitur-keren`
-3. Commit perubahan: `git commit -m 'feat: tambah fitur keren'`
-4. Push ke branch: `git push origin fitur-keren`
-5. Buat Pull Request
+1. Fork the repository
+2. Create a feature branch: `git checkout -b cool-feature`
+3. Commit your changes: `git commit -m 'feat: add cool feature'`
+4. Push to branch: `git push origin cool-feature`
+5. Create a Pull Request
 
-Mohon pastikan:
+Please ensure:
 
-- Tidak menambah dependency eksternal
-- Kode tetap CommonJS (require, module.exports)
-- Setiap command mengembalikan `{ success, message }`
-- Test dengan `node bin/hwb.js help`
+- No additional external dependencies
+- Code stays CommonJS (require, module.exports)
+- Each command returns `{ success, message }`
+- Test with `node bin/hwb.js help`
 
-## Lisensi
+## License
 
-MIT © 2026 Khrannas. Lihat [LICENSE](LICENSE) untuk detail.
+MIT © 2026 Khrannas. See [LICENSE](LICENSE) for details.

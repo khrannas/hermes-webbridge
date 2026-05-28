@@ -2,22 +2,22 @@
 
 ## Reporting a Vulnerability
 
-Jika Anda menemukan kerentanan keamanan di **hermes-webbridge**, harap laporkan secara bertanggung jawab dengan mengirim email ke **Khrannas** melalui GitHub Issues dengan label `security`.
+If you find a security vulnerability in **hermes-webbridge**, please report it responsibly by emailing **Khrannas** via GitHub Issues with the `security` label.
 
-Jangan membuka issue publik untuk kerentanan keamanan yang belum diperbaiki.
+Do not open a public issue for unpatched security vulnerabilities.
 
 ## Response Time
 
-- Kami akan merespon laporan dalam waktu **48 jam**
-- Update perkembangan akan diberikan setiap **7 hari**
-- Jika kerentanan diterima, patch akan dirilis secepatnya
+- We will respond to reports within **48 hours**
+- Progress updates will be given every **7 days**
+- If the vulnerability is accepted, a patch will be released as soon as possible
 
 ## Scope
 
-Kerentanan yang menjadi perhatian:
+Vulnerabilities of concern:
 
 - Remote code execution
-- Injection attacks (command injection, dll.)
+- Injection attacks (command injection, etc.)
 - Exposure of sensitive data
 - Privilege escalation
 
@@ -27,4 +27,4 @@ Kerentanan yang menjadi perhatian:
 |---------|-----------|
 | 1.x     | ✅ Active |
 
-Terima kasih telah membantu menjaga keamanan proyek ini.
+Thank you for helping keep this project safe.
